@@ -1,0 +1,34 @@
+{
+  "name": "contentgrabber",
+  "version": "1.0.0",
+  "description": "Code for handling the logic and deployment of the link scraping and the displaying of the webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twosdai/contentGrabber.git"
+  },
+  "author": "Daniel Wasserlauf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twosdai/contentGrabber/issues"
+  },
+  "homepage": "https://github.com/twosdai/contentGrabber#readme",
+  "devDependencies": {
+    "eslint": "5.3.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-prettier": "2.6.1",
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.11.1",
+    "@dougskinner/eslint-config": "^1.0.3",
+    "serverless": "^1.63.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.615.0",
+    "lodash.flattendeep": "^4.4.0",
+    "snoowrap": "^1.20.1"
+  }
+}
