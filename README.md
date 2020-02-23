@@ -8,7 +8,7 @@ This repository is for the infrastructure and code to grab links from top webpag
 
 ### Purpose
 
-This Repository serves as a place to deploy a personally managed webpage which aggregates links from hackernews and reddit.
+This repository serves as a place to deploy a personally managed webpage to aggregate links from hackernews and reddit.
 ### Getting Started
 
 This guild assumes you have an aws account, if you do not please go to `aws.amazon.com` and create one and configure your system through `aws configure` to be able to deploy to aws. This guild also assumes you have Node 12.x installed and npm installed. Please vist `www.nodejs.com` if you do not. 
@@ -31,3 +31,6 @@ Also note that there will likely be some costs to running the resources through 
     - Additional API integrations beyond hackernews, reddit 
     - CSS if needed. 
     - Multiple system testing currently devlopment has only been done on linux-mint 19
+    - Build tagging for link titles 
+    - Keep history for looking back
+   
