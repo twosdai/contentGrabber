@@ -11,6 +11,8 @@ This repository is for the infrastructure and code to grab links from top webpag
 This repository serves as a place to deploy a personally managed webpage to aggregate links from hackernews and reddit.
 ### Getting Started
 
+Example result: `www.danielwasserlaufquicklinks.com`
+
 This guild assumes you have an aws account, if you do not please go to `aws.amazon.com` and create one and configure your system through `aws configure` to be able to deploy to aws. This guild also assumes you have Node 12.x installed and npm installed. Please vist `www.nodejs.com` if you do not. 
 
 Also note that there will likely be some costs to running the resources through AWS. 
