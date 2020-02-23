@@ -1,10 +1,12 @@
 const { buildHref } = require('./linkBuilder');
 
-const pageBuilder = (arrayOfLinks) => {
+const pageBuilder = (arrayOfLinksAndTitles) => {
     const header = '';
-    const body = buildHref(arrayOfLinks);
-    const html = `<!DOCTYPE html>
-<html><head> ${header} </head><body>  ${body} </body></html>`;
+
+    const body = arrayOfLinksAndTitles.reduce((acc, { url: link, title }) => {
+        return `${acc}${buildHref(link, title)}`;
+    }, '');
+    const html = `<!DOCTYPE html><html><head>${header}</head><body>${body}</body></html>`;
     return html;
 };
 

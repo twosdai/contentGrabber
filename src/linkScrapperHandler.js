@@ -6,7 +6,7 @@ const lambda = new AWS.Lambda({ region: 'us-east-1' });
 const handler = async () => {
     try {
         // get an array of links from web
-        const arrayOfLinksAndTitles = aggregator();
+        const arrayOfLinksAndTitles = await aggregator();
         // invoke page helper with array of links
         await lambda
             .invokeAsync({
@@ -20,7 +20,7 @@ const handler = async () => {
             .promise();
         // Handle failures gracefully
     } catch (error) {
-        log.error(error, error.stack, 'There was an error during execution');
+        log(error, error.stack, 'There was an error during execution');
     }
 };
 

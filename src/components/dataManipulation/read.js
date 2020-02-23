@@ -4,9 +4,7 @@ const { log } = require('../../utils/logger');
 const { getConfig } = require('../../../config');
 const {
     subreddits,
-    services: {
-        hackernews: { base }
-    }
+    hackernews: { base }
 } = getConfig();
 
 const readTopPostsReddit = async () => {
@@ -20,18 +18,18 @@ const readTopPostsReddit = async () => {
         );
         return listOfIds;
     } catch (error) {
-        log('There was an error when attempting to get reddit links', error, error.stack);
+        log('There was an error in attempting to get reddit links', error, error.stack)
         return [];
     }
 };
 const readTopPostsHackerNews = async () => {
     try {
-        const response = await hackerNewsConnector(`${base}/topstories.json`);
+        const response = await hackerNewsConnector(`${base}v0/topstories.json`);
         const listOfIds = await response.json();
         const listOfLinks = await Promise.all(
             listOfIds.map(async (id) => {
-                const singleLink = await hackerNewsConnector(`${base}/item/${id.toString()}.json`);
-                const { url, title } = await singleLink.json();
+                const responseForItem = await hackerNewsConnector(`${base}v0/item/${id.toString()}.json`);
+                const { url, title } = await responseForItem.json();
                 return { url, title };
             })
         );
@@ -41,5 +39,4 @@ const readTopPostsHackerNews = async () => {
         return [];
     }
 };
-readTopPostsHackerNews();
 module.exports = { readTopPostsReddit, readTopPostsHackerNews };

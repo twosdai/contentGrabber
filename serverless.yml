@@ -1,41 +1,44 @@
 service: 'self-hosted-link-crawler'
 
 custom:
-    site-name: 'Fill'
-    bucket-name: 'Fill'
-    hostedZoneName: 'Fill'
-    aliasHostedZoneId: 'Fill'    # us-east-1
-    aliasDNSName: 'Fill'
+    site-name: FILL
+    bucket-name: FILL
+    hostedZoneName: FILL
+    aliasHostedZoneId: Z3AQBSTGFYJSTF    # us-east-1
+    aliasDNSName: s3-website-us-east-1.amazonaws.com
+
 provider:
     name: aws
     timeout: 120
-    stackName: 'Fill'
+    stackName: 'self-hosted-link-crawler'
     runtime: nodejs12.x
-
-
-environment:
-      BUCKET_NAME: ${self.custom.bucket-name}
+    iamRoleStatements:
+        - Effect: Allow
+          Action:
+            - lambda:InvokeFunction
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:PutObjectAcl
+          Resource: "arn:aws:s3:::${self:custom.bucket-name}/*"
 package:
     individually: true
     exclude:
-        - node-modules/eslint*
         - node_modules/**/aws-sdk/**
         - node_modules/**/node/**
         - node_modules/**/node-bin-setup/**
-        - node_modules/@dougskinner/*
         - test/**
         - coverage/**
         - .vscode/**
+        - README.md
+        - LICENSE
 
 functions:
    link-crawler:
         handler: src/linkScrapperHandler.handler
         name: link-crawler
-        iamRoleStatements:
-        - Effect: Allow
-          Action:
-            - lambda:InvokeFunction
-          Resource: "*"
+        
         package:
           exclude:
             - src/staticPageHandler.js
@@ -46,6 +49,8 @@ functions:
    page-builder:
         handler: src/staticPageHandler.handler
         name: page-builder
+        environment:
+              BUCKET_NAME: ${self:custom.bucket-name}
         iamRoleStatements:
             - Effect: Allow
               Action:
@@ -92,7 +97,7 @@ resources:
         R53HostedZone:
           Type: AWS::Route53::HostedZone
           Properties: 
-            Name: www.danielwasserlaufquicklinks.com
+            Name: FILL
 
         DnsRecord:
             Type: "AWS::Route53::RecordSet"
