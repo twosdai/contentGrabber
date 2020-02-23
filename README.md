@@ -3,7 +3,7 @@ This repository is for the infrastructure and code to grab links from top webpag
 
 ### Technologies Used
 
-[AWS]('aws.amazon.com')
+[AWS]('aws.amazon.com')  
 [Node.js]('www.nodejs.org')
 
 ### Purpose
