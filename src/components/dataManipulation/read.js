@@ -18,7 +18,7 @@ const readTopPostsReddit = async () => {
         );
         return listOfIds;
     } catch (error) {
-        log('There was an error in attempting to get reddit links', error, error.stack)
+        log('There was an error in attempting to get reddit links', error, error.stack);
         return [];
     }
 };
@@ -30,13 +30,14 @@ const readTopPostsHackerNews = async () => {
             listOfIds.map(async (id) => {
                 const responseForItem = await hackerNewsConnector(`${base}v0/item/${id.toString()}.json`);
                 const { url, title } = await responseForItem.json();
-                return { url, title };
+                return url && { url, title };
             })
         );
-        return listOfLinks;
+        return listOfLinks.filter((x) => x);
     } catch (error) {
         log('There was an error when attempting to get hackernews links', error, error.stack);
         return [];
     }
 };
+
 module.exports = { readTopPostsReddit, readTopPostsHackerNews };
