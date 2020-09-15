@@ -9,7 +9,7 @@ const pageBuilder = (arrayOfLinksAndTitles) => {
     const html = `<!DOCTYPE html><html><head>${header}</head>${preloadScript()}<body>${body}</body></html>`;
     return html;
 };
-// +
+// https://instant.page/ basically preloads content onhover
 const preloadScript = () =>
     '<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>';
 module.exports = { pageBuilder };
