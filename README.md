@@ -22,6 +22,7 @@ Also note that there will likely be some costs to running the resources through 
  - If you want to add more subreddits just extend the subreddits array with more subs, like 'hacking'
  - Update the Route 53 components in the `serverless.yml` file fill in the labels called `FILL`
  - Verify that you have the domain you need to run the webpage purchased through AWS
+     * There maybe some manual configuration you will need to do when linking the R53 domain to S3 feel free to reach out if you have problems during this stage.
   - Run `sudo serverless deploy` 
  - Verify that your site is created in S3, and the lambdas have deployed correctly, Serverless will deploy a cloudformation stack which should manage it all for you. 
 
